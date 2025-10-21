@@ -70,4 +70,18 @@ public class Usuario {
                 ", telefono='" + telefono + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Usuario usuario = (Usuario) obj;
+        return java.util.Objects.equals(id, usuario.id) &&
+               java.util.Objects.equals(email, usuario.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(id, email);
+    }
 }

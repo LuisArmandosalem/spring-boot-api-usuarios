@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
         
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
-                "Resource Not Found",
+                "NOT_FOUND",
                 ex.getMessage(),
                 request.getDescription(false).replace("uri=", "")
         );
@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
         
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.CONFLICT.value(),
-                "Data Conflict",
+                "CONFLICT",
                 ex.getMessage(),
                 request.getDescription(false).replace("uri=", "")
         );

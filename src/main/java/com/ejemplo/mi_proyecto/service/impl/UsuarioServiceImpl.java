@@ -82,7 +82,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         
         // Buscar usuario existente
         Usuario usuarioExistente = usuarioRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No se encontró usuario con ID: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con ID: " + id));
         
         // Validar datos del usuario actualizado
         validarUsuario(usuarioActualizado);
@@ -114,7 +114,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         
         // Verificar que el usuario exista
         if (!usuarioRepository.existsById(id)) {
-            throw new ResourceNotFoundException("No se encontró usuario con ID: " + id);
+            throw new ResourceNotFoundException("Usuario no encontrado con ID: " + id);
         }
         
         // Eliminar usuario

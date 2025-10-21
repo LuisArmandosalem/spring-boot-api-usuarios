@@ -63,7 +63,7 @@ class GlobalExceptionHandlerTest {
 
     @Test
     void handleIllegalArgumentException() {
-        // Given
+        // Give git n
         String message = "ID inválido";
         IllegalArgumentException exception = new IllegalArgumentException(message);
         when(webRequest.getDescription(false)).thenReturn("uri=/api/usuarios/-1");

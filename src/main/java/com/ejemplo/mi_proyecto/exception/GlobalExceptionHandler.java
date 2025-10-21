@@ -1,6 +1,8 @@
 package com.ejemplo.mi_proyecto.exception;
 
 import com.ejemplo.mi_proyecto.dto.ErrorResponse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,12 +16,16 @@ import org.springframework.web.context.request.WebRequest;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    private static final Logger logger = LogManager.getLogger(GlobalExceptionHandler.class);
+
     /**
      * Maneja excepciones cuando no se encuentra un recurso
      */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFoundException(
             ResourceNotFoundException ex, WebRequest request) {
+        
+        logger.warn("Recurso no encontrado: {} - Path: {}", ex.getMessage(), request.getDescription(false));
         
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
@@ -37,6 +43,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataConflictException.class)
     public ResponseEntity<ErrorResponse> handleDataConflictException(
             DataConflictException ex, WebRequest request) {
+        
+        logger.warn("Conflicto de datos: {} - Path: {}", ex.getMessage(), request.getDescription(false));
         
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.CONFLICT.value(),
@@ -79,9 +87,8 @@ public class GlobalExceptionHandler {
                 request.getDescription(false).replace("uri=", "")
         );
         
-        // Log del error real para debugging (en un entorno real usarías un logger)
-        System.err.println("Error interno: " + ex.getMessage());
-        ex.printStackTrace();
+        // Log del error real para debugging
+        logger.error("Error interno en la aplicación: {}", ex.getMessage(), ex);
         
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }

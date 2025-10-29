@@ -4,6 +4,33 @@
 
 Este proyecto es una **API REST completa** desarrollada con **Spring Boot** que implementa un sistema de gestión de usuarios con arquitectura profesional de capas. Es un ejemplo práctico de las mejores prácticas en desarrollo de aplicaciones Java enterprise.
 
+---
+
+## 🎁 **NUEVO: Generador de Proyectos Spring Boot para Java 11**
+
+¿Quieres crear tu propio proyecto Spring Boot con Maven desde cero?
+
+**Usa nuestro script generador automático:**
+
+```bash
+./generar-proyecto-spring-boot.sh
+```
+
+Este script crea un proyecto completo con:
+- ✅ Spring Boot 2.7.18 compatible con Java 11
+- ✅ Arquitectura completa (Controller, Service, Repository, Entity)
+- ✅ CRUD de Usuario de ejemplo
+- ✅ PostgreSQL + H2 para tests
+- ✅ Manejo global de excepciones
+- ✅ Configuración lista para producción
+
+**📖 Documentación del generador:**
+- [README-GENERADOR.md](README-GENERADOR.md) - Características y descripción
+- [GUIA-USO-GENERADOR.md](GUIA-USO-GENERADOR.md) - Tutorial completo con ejemplos
+- [GUIA-RAPIDA.md](GUIA-RAPIDA.md) - Referencia rápida
+
+---
+
 ## 🏗️ Arquitectura
 
 ### Diagrama de Arquitectura
